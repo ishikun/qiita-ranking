@@ -1,0 +1,11 @@
+.subtitle:not(:last-child), .title:not(:last-child) {
+	margin-bottom: 1.9rem;
+}
+
+.subtitle {
+	font-size: 1rem;
+}
+
+.subtitle a:hover {
+	text-decoration: underline;
+}

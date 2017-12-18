@@ -1,0 +1,7 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule ^(\w+?)/?$ /?slug=$1 [NC]
+
+RewriteCond %{QUERY_STRING} slug=(\w+)
+RewriteRule ^index\.php$ /%1? [L,R=301]
+</IfModule>

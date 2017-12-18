@@ -1,0 +1,5 @@
+<?php
+define('DATABASE_DSN',       'mysql:dbname=hogehoge;host=127.0.0.1;charset=utf8mb4');
+define('DATABASE_USERNAME',  'hogehoge');
+define('DATABASE_PASSWORD',  'hogehoge');
+define('QIITA_ACCESS_TOKEN', 'hogehoge');
