@@ -1,7 +1,10 @@
 <IfModule mod_rewrite.c>
 RewriteEngine On
-RewriteRule ^(\w+?)/?$ /?slug=$1 [NC]
-
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+RewriteRule ^([a-zA-Z0-9_-]+?)/?$ /2017/$1 [R=301,L]
+RewriteRule ^([0-9]{4})/([a-zA-Z0-9_-]+?)/?$ /?year=$1&slug=$2 [NC]
+RewriteCond %{QUERY_STRING} year=(\d{4})
 RewriteCond %{QUERY_STRING} slug=(\w+)
-RewriteRule ^index\.php$ /%1? [L,R=301]
+RewriteRule ^index\.php$ /%1/%2 [R=301,L]
 </IfModule>

@@ -66,14 +66,14 @@ class Qac {
 	 * カレンダー表示
 	 * @param string $slug
 	 */
-	public function calendar( $slug ) {
+	public function calendar( $year, $slug ) {
 		// インスタンス
 		$qac_year     = QacYear::getInstance();
 		$qac_calendar = QacCalendar::getInstance();
 		$qac_item     = QacItem::getInstance();
 
 		// 指定されたカレンダーを呼び出し
-		$year = date('m') === '12' ? (int) date('Y') : (int) date('Y') - 1;
+		$year = (int) $year;
 		$current_qac_year     = $qac_year->find_by( array( 'year' => $year ) );
 		$current_qac_calendar = $qac_calendar->find_by( array( 'year_id' => $current_qac_year->id, 'url' => $current_qac_year->url . self::DS . $slug ) );
 		$current_qac_items    = $qac_item->all( array( 'calendar_id' => $current_qac_calendar->id ) );
@@ -185,7 +185,7 @@ EOT;
 	<div class="container">
 		<div class="notification is-warning">
 			データが取得されていないか、記事がないため表示できません。<br>
-			なお、データの取得は毎日8:00に行われます。
+			なお、データの取得は毎日8時に行われます。
 		</div>
 	</div>
 </section>
@@ -199,7 +199,7 @@ EOT;
 	<div class="container">
 		<div class="notification is-success">
 			データの取得を設定しました。<br>
-			データの取得は翌日8:00から行われるため、それまでしばらくお待ちください。
+			データの取得は毎日8時に行われるため、それまでしばらくお待ちください。
 		</div>
 	</div>
 </section>
