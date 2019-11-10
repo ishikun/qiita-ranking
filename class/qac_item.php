@@ -64,6 +64,11 @@ class QacItem {
 						)
 					);
 					$response = file_get_contents( "https://qiita.com/api/v2/items/{$item_id}", false, $context );
+
+					if ( $response === false ) {
+						continue;
+					}
+
 					$json_response = json_decode( $response );
 					$likes_count = $json_response->likes_count;
 				}
