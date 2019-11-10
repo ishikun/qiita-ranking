@@ -87,8 +87,11 @@ class Database {
 		$sql = "UPDATE {$this->getTableName( $class )} SET ";
 
 		$values = array();
-		foreach ( array_keys( $data_params ) as $key ) {
+		foreach ( $data_params as $key => $value ) {
 			$values[] = "{$key} = :{$key}";
+			if ( is_bool( $value ) ) {
+				$data_params[$key] = (int) $value;
+			}
 		}
 		$sql .= implode(', ', $values);
 
