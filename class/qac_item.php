@@ -45,11 +45,10 @@ class QacItem {
 		$items = array();
 		foreach ( $xpath->query( '//entry' ) as $node ) {
 			$url   = $xpath->evaluate( 'string(link/@href)', $node );
+			$title = $xpath->evaluate( 'string(title)', $node );
 			if ( preg_match( '/^https:\/\/qiita.com/i', $url ) ) {
-				$title = $xpath->evaluate( 'string(title)', $node );
 				$is_qiita = true;
 			} else {
-				$title = $xpath->evaluate( 'string(content)', $node );
 				$is_qiita = false;
 			}
 
